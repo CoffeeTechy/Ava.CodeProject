@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Ava.CodeProject.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="550" d:DesignHeight="270"
+             Width="550" Height="270"
+             x:Class="Ava.CodeProject.Views.GameCatalogueView"
+             x:DataType="vm:GameCatalogueVM">
+  <UserControl.DataContext>
+    <vm:GameCatalogueVM/>
+  </UserControl.DataContext>
+
+  <UserControl.Styles>
+    <Style Selector="DataGridColumnHeader">
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="FontSize" Value="18"/>
+    </Style>
+  </UserControl.Styles>
+
+  <StackPanel>
+    <Border BorderBrush="Gainsboro" BorderThickness="3"
+            Width="550" Height="190">
+      <DataGrid ItemsSource="{Binding Games}" AutoGenerateColumns="False"
+                GridLinesVisibility="All">
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="350"/>
+          <DataGridCheckBoxColumn Header="Favorite" Binding="{Binding Favorite}" Width="*"/>        
+        </DataGrid.Columns>
+      </DataGrid>
+   </Border>
+    <Grid ColumnDefinitions="Auto, Auto" RowDefinitions="Auto, Auto">
+      <TextBox Watermark="Write game title here..." Width="285"
+             Text="{Binding gametitle, Mode=TwoWay}" Margin="5,10,0,0" HorizontalAlignment="Left"
+               Grid.Column="0" Grid.Row="0"/>
+      <Button Content="Remove non-Favorite" Margin="80,0,0,0" Command="{Binding removeNonFav}"
+              HorizontalAlignment="Right" Grid.Column="1"/>
+      <Button Margin="0,0,30,0" Command="{Binding removeFav}"
+            HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1">Remove Favorite</Button>
+      <Button Content="Click to Add" Margin="20,5,0,0" HorizontalAlignment="Left"
+              Command="{Binding addGames}" Grid.Column="0" Grid.Row="1"/>
+      <Button Content="Remove Last Game" Command="{Binding removeGame}" Margin="130,5,0,0"
+              Grid.Column="0" Grid.Row="1"/>
+    </Grid>
+    
+  </StackPanel>
+</UserControl>

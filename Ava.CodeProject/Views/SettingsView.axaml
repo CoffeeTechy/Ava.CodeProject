@@ -1,0 +1,117 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:Ava.CodeProject.ViewModels"
+        xmlns:i="using:Ava.CodeProject.Assets"
+        xmlns:np="https://np.com/visuals"
+        mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="350"
+        Width="250" Height="350"
+        x:Class="Ava.CodeProject.SettingsView"
+        Title="SettingsView"
+        x:DataType="vm:SettingsViewModel">
+
+  <Design.DataContext>
+    <vm:SettingsViewModel/>
+  </Design.DataContext>
+
+  <Window.Styles>
+    <FluentTheme/>
+  </Window.Styles>
+
+  <!--<Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+          <SolidColorBrush x:Key="ThemeForegroundBrush"
+                           Color="Blue"/>
+        </ResourceDictionary>
+      </ResourceDictionary.ThemeDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>-->
+
+  <!--<Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <np:ThemeLoader Name="ColorThemeLoader"
+                        SelectedThemeId="Dark">
+          
+          
+        </np:ThemeLoader>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>-->
+
+  <Panel>
+    <ExperimentalAcrylicBorder IsHitTestVisible="False">
+      <ExperimentalAcrylicBorder.Material>
+        <ExperimentalAcrylicMaterial
+            BackgroundSource="Digger"
+            TintColor="Black"
+            TintOpacity="6"
+            MaterialOpacity="0.65" />
+      </ExperimentalAcrylicBorder.Material>
+    </ExperimentalAcrylicBorder>
+    <Grid ColumnDefinitions="Auto, Auto, *"
+          RowDefinitions="Auto, Auto, Auto">
+      <StackPanel Grid.Column="0">
+        
+        <Label Content="Home" HorizontalAlignment="Center" Margin="35,10,0,0"/>
+        <Button Grid.Row="0" Width="60" Height="54" Margin="40,15,0,0"
+                HorizontalAlignment="Center">
+          <PathIcon Data="{StaticResource home_regular}"/>
+        </Button>
+        <Separator Margin="0,13,0,0"/>
+        
+        <Label Content="Lists" HorizontalAlignment="Center" Margin="35,10,0,0"/>
+        <Button Grid.Row="1" Width="60" Height="54" Margin="40,15,0,0"
+                HorizontalAlignment="Center">
+          <PathIcon Data="{StaticResource library_regular}"/>
+        </Button>
+        <Separator Margin="0,13,0,0" HorizontalAlignment=""/>
+        
+        <Label Content="Exit" HorizontalAlignment="Center" Margin="35,13,0,0"/>
+        <Button Grid.Row="2" Width="60" Height="54" Margin="40,13,0,0"
+                HorizontalAlignment="Center" >
+          <PathIcon Data="{StaticResource sign_out_regular}"/>
+        </Button>
+      </StackPanel>
+      
+      <StackPanel Grid.Column="1">
+        
+        <Label Content="Options" HorizontalAlignment="Center" Margin="45,10,0,0"/>
+        <Button Grid.Row="0" Width="60" Height="54" Margin="45,15,0,0"
+                HorizontalAlignment="Center">
+          <PathIcon Data="{StaticResource options_regular}"/>       
+        </Button>
+        <Separator Margin="0,13,0,0"/>
+
+        
+        <Label Content="Light/Dark" Margin="50,10,0,0"/>
+        <Button Grid.Row="1" Width="60" Height="54" Margin="45,15,0,0"
+                HorizontalAlignment="Center" x:Name="ThemeButton">
+          <PathIcon Data="{StaticResource dark_theme_regular}"/>
+        </Button>
+        <Separator Margin="0,13,0,0"/>
+        
+        <Label Content="Save" HorizontalAlignment="Center" Margin="45,13,0,0"/>
+        <Button Grid.Row="2" Width="60" Height="54" Margin="45,13,0,0"
+              HorizontalAlignment="Center" Padding="5">
+          <PathIcon Data="{StaticResource save_regular}"/>
+        </Button>
+        
+      </StackPanel>
+      
+      <StackPanel Grid.Column="2">
+        
+        <Separator Margin="0,115,0,0"/>
+
+        <Separator Margin="0,115,0,0"/>
+        
+      </StackPanel>
+    </Grid>
+  </Panel>
+  
+  
+  
+</Window>

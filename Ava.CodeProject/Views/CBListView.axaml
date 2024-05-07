@@ -1,0 +1,100 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Ava.CodeProject.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="330"
+             Width="250" Height="330"
+             x:Class="Ava.CodeProject.Views.CBListView"
+             x:DataType="vm:CBListViewModel">
+  <UserControl.DataContext>
+    <vm:CBListViewModel/>
+  </UserControl.DataContext>
+
+  <UserControl.Styles>
+    <Style Selector="CheckBox">
+      <Setter Property="BorderBrush" Value=""/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="Width" Value="230"/>
+      <Setter Property="Margin" Value="0,0,0,0"/>
+      <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+    <Style Selector="ListBoxItem">
+      <Setter Property="Padding" Value="1"/>
+    </Style>
+  </UserControl.Styles>  
+
+  <StackPanel>
+    <TextBlock Text="This is the CheckBox List" HorizontalAlignment="Center" 
+               FontWeight="Bold" Margin="0,0,0,3"/>
+    <TextBox Margin="5,0" Watermark="Write Task" Text="{Binding AddTask, Mode=TwoWay}"/>
+    <Grid>
+      <Button Content="O Add Task" Command="{Binding addCheckBox}" 
+              HorizontalAlignment="Left" Margin="3,5,0,3" />
+      <Button Content="X Delete Task" HorizontalAlignment="Right" Margin="0,0,3,0"
+              Command="{Binding EraseTask}"></Button>
+    </Grid>
+    <!--<Button Content="O Add Task" Command="{Binding addCheckBox}" HorizontalAlignment="Left" Margin="3,5,0,3" />
+    <Button HorizontalAlignment="Right" Margin="0,0,3,0"></Button>-->
+
+    <Border MaxHeight="300">
+      <ScrollViewer AllowAutoHide="True" Height="200">
+        <ListBox Name="MyCB" ItemsSource="{Binding Path=CbList}">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <CheckBox x:Name="CB" Content="{Binding Cbitem}" />
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </ScrollViewer>
+    </Border>
+
+    <Button HorizontalAlignment="Center" Command="{Binding EraseCBList}" Margin="0,6,5,0">Erase Task List</Button>
+    <!--<DataGrid ItemsSource="{Binding CbList}" AutoGenerateColumns="True" 
+              CanUserResizeColumns="True" GridLinesVisibility="All">
+      <DataGrid.Columns>
+        <DataGridTemplateColumn Header="" Width="">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate DataType="vm:CBListViewModel">
+              <StackPanel Orientation="">
+                --><!--<ItemsPresenter/>--><!--
+                --><!--<CheckBox Margin="5,0,0,0" HorizontalAlignment="Center"/>--><!--
+              </StackPanel>                          
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        --><!--<DataGridTemplateColumn Header="Task" Width="*">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate DataType="vm:CBListViewModel">
+              <ItemsPresenter/>
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>--><!--
+      </DataGrid.Columns>    
+    </DataGrid>-->
+    
+    
+
+    <!--<DataGridTemplateColumn Header="Task">
+        <DataGridTemplateColumn.CellTemplate>
+          <DataTemplate DataType="model:CBListModel">
+            
+          </DataTemplate>
+        </DataGridTemplateColumn.CellTemplate>
+      </DataGridTemplateColumn>-->
+    
+      <!--<Border BorderBrush="Black" BorderThickness="2" Height="216">
+        <Grid>
+          <DataGrid ItemsSource="{Binding CbList}" GridLinesVisibility="Horizontal">
+            <DataGrid.Columns>
+              <DataGridCheckBoxColumn Header="Done" Width="*" Binding="{Binding DoneDone}"/>
+              <DataGridTextColumn Header="Task" Width="*" Binding="{Binding AddTask}"/>
+            </DataGrid.Columns>
+            <ItemsPresenter/>
+          </DataGrid>
+        </Grid>
+      </Border>-->
+      
+  </StackPanel>
+
+</UserControl>

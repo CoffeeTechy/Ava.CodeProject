@@ -1,0 +1,182 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Ava.CodeProject.ViewModels"
+        xmlns:pviews="using:Ava.CodeProject.Views"
+        xmlns:i="using:Ava.CodeProject.Assets"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="620" d:DesignHeight="450"
+        Width="620" Height="450"
+        x:Class="Ava.CodeProject.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Ava.CodeProject">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+  <Window.Styles>
+    <!-- have to use FlyoutPresenterClasses in Menu Layout -->
+    <Style Selector="MenuFlyoutPresenter.bottom">
+      <Setter Property="Width" Value="180" />
+    </Style>
+    <Style Selector="MenuFlyoutPresenter.split">
+      <Setter Property="Width" Value="125" />
+      <Setter Property="BorderBrush" Value="Black" />
+    </Style>
+    <!--<Style Selector="MenuFlyoutPresenter.side">
+      <Setter Property="Width" Value="175"/>
+    </Style>-->
+    <Style Selector="TabControl WrapPanel">
+      <Setter Property="Background" Value="DarkGreen" />
+    </Style>
+    <Style Selector="TabItem:pointerover /template/ ContentPresenter" >
+      <Setter Property="Background" Value="white" />
+      <Setter Property="Foreground" Value="Black"/>
+    </Style>
+    <Style Selector="TabControl">
+      <Setter Property="Background" Value="{Binding Bcolor}" />
+    </Style>
+
+  </Window.Styles>
+
+  <DockPanel>
+    
+    <!-- This is the splitview on the left side -->
+    <!-- Have to figure out what more I can and want to do with the split view -->
+    <SplitView IsPaneOpen="{Binding PaneOpen}"
+               DisplayMode="CompactInline"
+               CompactPaneLength="38"
+               OpenPaneLength="205">
+      <!-- OpenPaneLength="225" -->
+      <!-- Overlay, Inline, CompactInline, CompactOverlay for DiplayMode -->
+      <SplitView.Pane>
+        <Grid ColumnDefinitions="Auto, Auto, *">
+          <StackPanel Grid.Column="0" Width="40" VerticalAlignment="Top">
+             <Button Content="{Binding IsOpen}" 
+                  ClickMode="Press" 
+                  ToolTip.Tip="Open the pane" 
+                  Command="{Binding OpenPane}" 
+                     Margin="0,2,0,0"
+                     Width="36"/>
+            <Button Content="XX"
+                    ClickMode="Press"
+                    ToolTip.Tip="Goodbye Button" 
+                    Command="{Binding ChangeGreeting}"
+                    Margin="0,3,0,0"/>
+           </StackPanel>
+          
+          <StackPanel Width="115" Grid.Column="1" HorizontalAlignment="Left"
+                      Margin="5,0,0,0">
+            <Label Content="Settings: " FontSize="20" FontWeight="Bold" Margin="0,5,0,0"/>
+            <Label Content="TicTacToe:" FontSize="20" FontWeight="Bold" Margin="0,5,0,0"/>
+          </StackPanel>
+          
+          <StackPanel Grid.Column="2">
+            <Button Width="34" Background="Gray"
+                    Command="{Binding newWindow}" Margin="0,5,0,0">
+              <PathIcon Data="{StaticResource settings-cog}"/>
+            </Button>
+            <Button Margin="0,5,0,0"/>
+          </StackPanel>
+        </Grid>
+      </SplitView.Pane>
+      <!--<SplitView.Content>
+        <Button Content="Content" Command="{Binding OpenPane}" Margin="5,0,5,0"/>
+      </SplitView.Content>-->
+      <!-- Saving this for later, might do something with the content -->
+
+    </SplitView>
+    
+<!-- This is the main body on the right side of the splitview -->
+    <!-- First and third row defined with the second filling up the space between -->
+    <Grid RowDefinitions="Auto, *, Auto">
+
+      <!-- Moved the Split button to the first row with Top Label title -->
+      
+      <Label Content="The Top Label" FontWeight="Bold" Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,100,0" FontSize="20"/>
+      <SplitButton Grid.Row="0" Command="{Binding SplitButtonCommand}" BorderThickness="2"
+               BorderBrush="Black" Content="{Binding Opt}" VerticalAlignment="Top"
+               HorizontalAlignment="Right" HorizontalContentAlignment="Left"
+                   ToolTip.Tip="Press arrow for options, then press button">     
+        <SplitButton.Flyout>
+          <MenuFlyout VerticalOffset="5" Placement="LeftEdgeAlignedTop"
+                      FlyoutPresenterClasses="split">            
+            <MenuItem Header="Green" Command="{Binding SplitButtonOption1}"/>
+            <MenuItem Header="Red" Command="{Binding SplitButtonOption2}"/>
+            <MenuItem Header="Gray" Command="{Binding SplitButtonOption3}"/>
+            <Separator/>
+            <MenuItem Header="Reset" Command="{Binding SplitButtonOption4}"/>
+          </MenuFlyout>
+        </SplitButton.Flyout>
+      </SplitButton>
+      
+      
+      <!-- Tab Control is second row-->
+      <TabControl Grid.Row="1">
+        <TabItem Header="Welcome">
+          <StackPanel>
+            <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Left" VerticalAlignment="" Margin="0,15,0,0"/>
+            <TextBlock Text="{Binding Explain}" Margin="0,25,0,0"/>
+          </StackPanel>
+        </TabItem>
+        <TabItem Header="Refresh">
+          <StackPanel>
+            <TextBlock Margin="0,15,0,10" Text="Refresh Welcome tab text" />
+            <Button Content="Refresh" Command="{Binding RefreshGreeting}" />
+          </StackPanel>
+        </TabItem>
+        <!-- Practicing using Mvvm with the mvvm tab -->
+        <TabItem Header="MvvM List">
+          <StackPanel Orientation="Horizontal">
+            <pviews:ItemListView HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Column="0"/>
+            <pviews:CBListView Margin="10,0,0,0"/>
+          </StackPanel>
+        </TabItem>
+        <TabItem Header="Object List">
+          <StackPanel Orientation="">
+            <Label FontWeight="Bold" FontSize="20" Content="Video Game Catalogue"
+                   HorizontalAlignment="Center"/>
+            <pviews:GameCatalogueView Margin="0,10,0,0"/>
+          </StackPanel>
+        </TabItem>
+      </TabControl>
+
+      
+      <!-- Now the bottom bar is the third row-->
+      <Grid Grid.Row="2" Background="DarkSlateGray" Height="30">
+        
+        <Button Margin="120,0,0,0" Foreground="White" Content="Menu Flyout" 
+                BorderBrush="White" HorizontalAlignment="Left" Background="DimGray">
+          <Button.Flyout>
+            <MenuFlyout FlyoutPresenterClasses="bottom" Placement="TopEdgeAlignedLeft">
+              <MenuItem Header="Hi there">
+                <MenuItem Header="Another Header" />
+              </MenuItem>
+              <MenuItem Header="Second Header" />
+            </MenuFlyout>   
+          </Button.Flyout>
+        </Button>
+        
+        <Label Content="Right click me: " Margin="0,5,165,0" HorizontalAlignment="Right"
+               Foreground="Yellow"/>
+        <Button Margin="0,0,140,0" HorizontalAlignment="Right" 
+                Foreground="White" Content="O" Background="DimGray">
+          <Button.ContextFlyout>
+            <MenuFlyout>
+              <MenuItem Header="Context Flyout" />
+              <MenuItem Header="Context Flyout" />
+            </MenuFlyout>
+          </Button.ContextFlyout>
+        </Button>
+
+      </Grid>
+    </Grid>
+    
+  </DockPanel>
+
+   
+</Window>
