@@ -111,6 +111,11 @@ namespace Ava.CodeProject.ViewModels
             window.Show();
         }
 
+        public void newGame()
+        {
+            var window = new TTTView();
+            window.Show();
+        }
 
     }
 

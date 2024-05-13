@@ -80,7 +80,8 @@
                     Command="{Binding newWindow}" Margin="0,5,0,0">
               <PathIcon Data="{StaticResource settings-cog}"/>
             </Button>
-            <Button Margin="0,5,0,0"/>
+            <Button Margin="0,5,0,0" Width="34" Content="X" Command="{Binding newGame}"
+                    Background="Gray"/>
           </StackPanel>
         </Grid>
       </SplitView.Pane>

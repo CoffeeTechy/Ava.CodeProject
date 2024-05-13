@@ -1,0 +1,87 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:Ava.CodeProject.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="425"
+        Width="300" Height="425"
+        x:Class="Ava.CodeProject.TTTView"
+        x:DataType="vm:TTTViewModel"
+        Title="Tic Tac Toe">
+
+  <Window.DataContext>
+    <vm:TTTViewModel/>
+  </Window.DataContext>
+
+  <Window.Styles>
+    <Style Selector="Button.grid">
+      <Setter Property="Width" Value="90"/>
+      <Setter Property="Height" Value="90"/>
+    </Style>
+  </Window.Styles>
+
+  <DockPanel>
+    <Grid RowDefinitions="Auto, *, Auto">
+
+      <!--The first row is the words and buttons-->
+      <StackPanel Grid.Row="0" Margin="0,20,0,5">
+        <StackPanel Orientation="Horizontal">
+          <Label Content="Player 1: " Margin="10,8,0,0" FontSize="15"/>
+          <Button Content="X" HorizontalAlignment="Left" Margin="0,0,0,0"
+                  FontSize="20" Padding="8" IsEnabled="False"/>
+          <Label Content="Player 2: " Margin="70,8,0,0" FontSize="15"/>
+          <Button Content="O" HorizontalAlignment="Right" Margin="0,0,0,0"
+                  FontSize="20" Padding="8" IsEnabled="False"/>
+        </StackPanel>
+      </StackPanel>
+
+      <!--The second row is the buttons that make up the grid-->
+      <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top">
+        <Button Classes="grid" Content="{Binding Btn1_player}" Command="{Binding Button1_Click}" Margin="10,0,5,0"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"
+                IsEnabled="{Binding Btn1enabled}"/>
+        <Button Classes="grid" Content="{Binding Btn2_player}" Command="{Binding Button2_Click}" Margin="0,0,5,0" 
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"
+                IsEnabled="{Binding Btn2enabled}"/>
+        <Button Classes="grid" Content="{Binding Btn3_player}" Command="{Binding Button3_Click}" Margin="0,0,0,0"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"
+                IsEnabled="{Binding Btn3enabled}"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top" Margin="0,95,0,0">
+        <Button Classes="grid" Content="{Binding Btn4_player}" Command="{Binding Button4_Click}" Margin="10,0,5,0"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"
+                IsEnabled="{Binding Btn4enabled}"/>
+        <Button Classes="grid" Content="{Binding Btn5_player}" Command="{Binding Button5_Click}" Margin="0,0,5,0"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"
+                IsEnabled="{Binding Btn5enabled}"/>
+        <Button Classes="grid" Content="{Binding Btn6_player}" Command="{Binding Button6_Click}" Margin="0,0,0,0" 
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"
+                IsEnabled="{Binding Btn6enabled}"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="1" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,190,0,0">
+        <Button Classes="grid" Content="{Binding Btn7_player}" Command="{Binding Button7_Click}" Margin="10,0,5,0"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"
+                IsEnabled="{Binding Btn7enabled}"/>
+        <Button Classes="grid" Content="{Binding Btn8_player}" Command="{Binding Button8_Click}" Margin="0,0,5,0"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"
+                IsEnabled="{Binding Btn8enabled}"/>
+        <Button Classes="grid" Content="{Binding Btn9_player}" Command="{Binding Button9_Click}" Margin="0,0,0,0"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"
+                IsEnabled="{Binding Btn9enabled}"/>
+      </StackPanel>
+
+      <Grid Grid.Row="2">
+        <Button Margin="30,0,0,25" Content="Reset" Command="{Binding ResetGame}"/>
+        <Label Content="X Wins: " Margin="140,0,0,0"/>
+        <Label Content="O Wins: " Margin="140,20,0,0"/>
+      </Grid>
+      
+      
+
+    </Grid>
+
+
+  </DockPanel>
+</Window>
