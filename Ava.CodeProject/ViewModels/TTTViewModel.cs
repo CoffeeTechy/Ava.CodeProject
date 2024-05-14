@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace Ava.CodeProject.ViewModels
         [ObservableProperty]
         private string player;
 
-        public TTTViewModel() { num = 0; player = string.Empty; 
+        public TTTViewModel() { num = 0; player = string.Empty; xwins = 0; owins = 0;
             Btn1enabled = true;
             Btn2enabled = true;
             Btn3enabled = true;
@@ -29,8 +30,8 @@ namespace Ava.CodeProject.ViewModels
             Btn9enabled = true;
         }
 
-        [ObservableProperty]
-        private string btn1_player;
+        [ObservableProperty]       
+        private string btn1_player; 
 
         [ObservableProperty]
         private string btn2_player;
@@ -83,6 +84,12 @@ namespace Ava.CodeProject.ViewModels
         [ObservableProperty]
         private bool btn9enabled;
 
+        [ObservableProperty]
+        private int xwins;
+
+        [ObservableProperty]
+        private int owins;
+
         public void Turns()
         {
             if (Num % 2 == 0)
@@ -101,7 +108,6 @@ namespace Ava.CodeProject.ViewModels
             Btn1_player = Player;
             Num++;
             Btn1enabled = false;
-            
         }
 
         public void Button2_Click()
@@ -170,6 +176,8 @@ namespace Ava.CodeProject.ViewModels
 
         public void ResetGame()
         {
+            XWinTally();
+            OWinTally();
             Btn1enabled = true; Btn1_player = string.Empty;
             Btn2enabled = true; Btn2_player = string.Empty;
             Btn3enabled = true; Btn3_player = string.Empty;
@@ -179,6 +187,79 @@ namespace Ava.CodeProject.ViewModels
             Btn7enabled = true; Btn7_player = string.Empty;
             Btn8enabled = true; Btn8_player = string.Empty;
             Btn9enabled = true; Btn9_player = string.Empty;
+            Num = 0;
+        }
+
+        public void XWinTally()
+        {
+            if (Btn1_player == "X" && Btn2_player == "X" && Btn3_player == "X") //First row
+            {
+                Xwins++;
+            }
+            else if (Btn4_player == "X" && Btn5_player == "X" && Btn6_player == "X") //second row
+            {
+                Xwins++;
+            }
+            else if (Btn7_player == "X" && Btn8_player == "X" && Btn9_player == "X") //thrid row
+            {
+                Xwins++;
+            }
+            else if (Btn1_player == "X" && Btn4_player == "X" && Btn7_player == "X") //first column
+            {
+                Xwins++;
+            }
+            else if (Btn2_player == "X" && Btn5_player == "X" && Btn8_player == "X") //second column
+            {
+                Xwins++;
+            }
+            else if (Btn3_player == "X" && Btn6_player == "X" && Btn9_player == "X") //third column
+            {
+                Xwins++;
+            }
+            else if (Btn1_player == "X" && Btn4_player == "X" && Btn9_player == "X") //first diag
+            {
+                Xwins++;
+            }
+            else if (Btn3_player == "X" && Btn4_player == "X" && Btn7_player == "X") //second diag
+            {
+                Xwins++;
+            }
+        }
+
+        public void OWinTally()
+        {
+            if (Btn1_player == "O" && Btn2_player == "O" && Btn3_player == "O") //First row
+            {
+                Owins++;
+            }
+            else if (Btn4_player == "O" && Btn5_player == "O" && Btn6_player == "O") //second row
+            {
+                Owins++;
+            }
+            else if (Btn7_player == "O" && Btn8_player == "O" && Btn9_player == "O") //thrid row
+            {
+                Owins++;
+            }
+            else if (Btn1_player == "O" && Btn4_player == "O" && Btn7_player == "O") //first column
+            {
+                Owins++;
+            }
+            else if (Btn2_player == "O" && Btn5_player == "O" && Btn8_player == "O") //second column
+            {
+                Owins++;
+            }
+            else if (Btn3_player == "O" && Btn6_player == "O" && Btn9_player == "O") //third column
+            {
+                Owins++;
+            }
+            else if (Btn1_player == "O" && Btn4_player == "O" && Btn9_player == "O") //first diag
+            {
+                Owins++;
+            }
+            else if (Btn3_player == "O" && Btn4_player == "O" && Btn7_player == "O") //second diag
+            {
+                Owins++;
+            }
         }
     }
 }

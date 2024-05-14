@@ -104,7 +104,6 @@ namespace Ava.CodeProject.ViewModels
             }                
         }
 
-        [RelayCommand]
         public void newWindow()
         {
             var window = new SettingsView();
