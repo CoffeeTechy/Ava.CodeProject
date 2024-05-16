@@ -27,11 +27,13 @@
       <StackPanel Grid.Row="0" Margin="0,20,0,5">
         <StackPanel Orientation="Horizontal">
           <Label Content="Player 1: " Margin="10,8,0,0" FontSize="15"/>
-          <Button Content="X" HorizontalAlignment="Left" Margin="0,0,0,0"
-                  FontSize="20" Padding="8" IsEnabled="False"/>
-          <Label Content="Player 2: " Margin="70,8,0,0" FontSize="15"/>
-          <Button Content="O" HorizontalAlignment="Right" Margin="0,0,0,0"
-                  FontSize="20" Padding="8" IsEnabled="False"/>
+          <Label Content="X" HorizontalAlignment="Left" Margin="0,0,0,0"
+                  FontSize="20" Padding="8" IsEnabled="False" BorderBrush="White" 
+                 BorderThickness="2"/>
+          <Label Content="Player 2: " Margin="67,8,0,0" FontSize="15"/>
+          <Label Content="O" HorizontalAlignment="Right" Margin="0,0,0,0"
+                  FontSize="20" Padding="8" IsEnabled="False" BorderBrush="White"
+                 BorderThickness="2"/>
         </StackPanel>
       </StackPanel>
 
@@ -82,12 +84,8 @@
             <Label Grid.Column="1" Content="{Binding Owins}" Margin="10,20,0,0"/>
           </Grid>
         </StackPanel>
-        <!--<Label Content="X Wins: " Margin="140,0,0,0"/>
-        <Label Content="O Wins: " Margin="140,20,0,0"/>-->
       </Grid>
-      
-      
-
+            
     </Grid>
 
 

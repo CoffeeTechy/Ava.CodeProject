@@ -49,8 +49,16 @@ namespace Ava.CodeProject.ViewModels
         [RelayCommand]
         public void RefreshGreeting() //changes again to say welcome
         {
-            Greeting = "Welcome again!";
-            Explain = "";
+            if (Greeting == "And goodbye!")
+            {
+                Greeting = "Welcome again!";
+                Explain = "";
+            }
+            else
+            {
+                Greeting = "The goodbye button is the XX button on the left side";
+                Explain = "";
+            }
         }
 
         //Color options
