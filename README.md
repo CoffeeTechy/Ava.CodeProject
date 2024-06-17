@@ -1,1 +1,1 @@
-This is a project to try different things with Avalonia and XAML to show what I am learning and try to learn as much from what I can think of instead of just following simple examples online
+This is a project to try different things with Avalonia and XAML to show what I am learning and try to learn as much as I can from hands on working on my own app as opposed to just blindly following along with tutorials. 
