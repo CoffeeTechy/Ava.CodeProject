@@ -1,1 +1,4 @@
-This is a project to try different things with Avalonia and XAML to show what I am learning and try to learn as much as I can from hands on working on my own app as opposed to just blindly following along with tutorials. 
+First project to learn Avalonia with hands on experience.
+
+Using CommunityToolkit.Mvvm for the observable objects, observable property, and relay command attributes. 
+Using Avalonia.Themes.Fluent, FluentAvaloniaUi, and NP.Ava.Visuals for different visuals and behaviors I wanted to see with this app.
