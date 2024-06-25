@@ -19,28 +19,9 @@
     <FluentTheme/>
   </Window.Styles>
 
-  <!--<Window.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.ThemeDictionaries>
-        <ResourceDictionary x:Key="Light">
-          <SolidColorBrush x:Key="ThemeForegroundBrush"
-                           Color="Blue"/>
-        </ResourceDictionary>
-      </ResourceDictionary.ThemeDictionaries>
-    </ResourceDictionary>
-  </Window.Resources>-->
-
-  <!--<Window.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        <np:ThemeLoader Name="ColorThemeLoader"
-                        SelectedThemeId="Dark">
-          
-          
-        </np:ThemeLoader>
-      </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-  </Window.Resources>-->
+<!-- Apparently, to switch between Light and Dark theme in Blazor, 
+     Need to reassign Color Palettes, and Accents also are the only other things that 
+     can be dynamically updated -->
 
   <Panel>
     <ExperimentalAcrylicBorder IsHitTestVisible="False">

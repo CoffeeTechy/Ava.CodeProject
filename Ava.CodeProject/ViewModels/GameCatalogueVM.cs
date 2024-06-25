@@ -16,14 +16,7 @@ namespace Ava.CodeProject.ViewModels
 
         public GameCatalogueVM() 
         { 
-
-            Games = new ObservableCollection<GameCatalogue>( new List<GameCatalogue>
-            {
-                // new GameCatalogue ("Helldivers 2", true),
-                // new GameCatalogue ("Halo: Infinte", false),
-                // new GameCatalogue ("Gears Tactics", false)
-            });
-       
+            Games = new ObservableCollection<GameCatalogue>( new List<GameCatalogue> { });      
         }
 
         public string? gtitle;
@@ -67,7 +60,7 @@ namespace Ava.CodeProject.ViewModels
             }
         }
 
-        public void removeNonFav()
+        public void removeNonFav() //still doesn't delete all non favorites
         {
             for (int i = 0; i < (Games.Count); i++) 
             { 
@@ -78,7 +71,7 @@ namespace Ava.CodeProject.ViewModels
             }
         }
 
-        public void removeFav()
+        public void removeFav() //still doesn't delete all favorites
         {
             for (int i = 0; i < (Games.Count); i++)
             {

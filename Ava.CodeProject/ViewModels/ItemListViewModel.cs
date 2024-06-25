@@ -23,7 +23,7 @@ namespace Ava.CodeProject.ViewModels
 
         public ItemListViewModel()
         {
-            itemNum = 1;
+            itemNum = 0;
 
             itemList = new ObservableCollection<ItemList>(new List<ItemList> { });
         }
@@ -45,6 +45,8 @@ namespace Ava.CodeProject.ViewModels
             {
                 if (AddItem != string.Empty)
                 {
+                    itemNum++;
+
                     var item = new ItemList(AddItem, itemNum)
                     {
                         ListItem = AddItem,
@@ -52,8 +54,6 @@ namespace Ava.CodeProject.ViewModels
                     };
 
                     itemList.Add(item);
-
-                    itemNum += 1;
                 }
             }
             AddItem = string.Empty;         
@@ -63,11 +63,12 @@ namespace Ava.CodeProject.ViewModels
         {
             itemList.Clear();
 
-            itemNum = 1;
+            itemNum = 0;
         }
 
         public void EraseLast()
         {
+            itemNum--;
             int num = itemList.Count;
 
             if (num > 0) 
@@ -75,9 +76,9 @@ namespace Ava.CodeProject.ViewModels
                 itemList.RemoveAt(num - 1);
             }
 
-            if (itemList.Count == 0)
+            if (itemList.Count <= 0)
             {
-                itemNum = 1;
+                itemNum = 0;
             }
         }
 

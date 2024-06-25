@@ -49,35 +49,6 @@
           
         </ListBox>
             
-            <!--<ListBox Name="MyLB" ItemsSource="{Binding Path=itemList}">
-            <ListBox.Template>
-              <ControlTemplate>
-                <DockPanel>
-     
-                  <Grid DockPanel.Dock="Top" Height="30">
-                    <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="22" />
-                      <ColumnDefinition Width="105" />
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" FontWeight="Black" HorizontalAlignment="Center">#</Label>
-                    <Label Grid.Column="1" Margin="0,0,0,0" FontWeight="Bold">| List Below</Label>
-                  </Grid>
-                  <DataGrid GridLinesVisibility="All">
-                    <DataGridTextColumn Header="#" Binding="{Binding Number}"/>
-                    <DataGridTextColumn Header="List Items" Binding="{Binding ListItem}"/>
-                  </DataGrid>
-                </DockPanel>              
-              </ControlTemplate>
-            </ListBox.Template>
-            
-            <ListBox.ItemTemplate>
-              <DataTemplate>
-                <TextBlock Text="{Binding}" Margin="0,0,0,0"/>
-              </DataTemplate>
-            </ListBox.ItemTemplate>
-            </ListBox>-->
-            
-          
       </Border>
 
       <Grid>

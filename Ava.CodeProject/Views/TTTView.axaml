@@ -23,7 +23,7 @@
   <DockPanel>
     <Grid RowDefinitions="Auto, *, Auto">
 
-      <!--The first row is the words and buttons-->
+      <!--The first row is showing who X and O are-->
       <StackPanel Grid.Row="0" Margin="0,20,0,5">
         <StackPanel Orientation="Horizontal">
           <Label Content="Player 1: " Margin="10,8,0,0" FontSize="15"/>
